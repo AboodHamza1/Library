@@ -1,19 +1,24 @@
-function Book(title,author,pages){
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.status = false;
-}
+class Book{
+    constructor(title,author,pages)
+    {
+        this.title = title
+        this.author = author
+        this.pages = pages
+        this.status = false
+    }
 
-Book.prototype.toggleStatus = function(){
-    this.status = !this.status;
+    toggleStatus(){
+        this.status = !this.status;
+    }
+    info(){
+        return (this.title + ' By ' + this.author +", " + this.pages + ' pages, status :' + this.status);
+    }
+
 }
 
 const myLibrary = [];
 
-Book.prototype.info = function(){
-    return (this.title + ' By ' + this.author +", " + this.pages + ' pages, status :' + this.status);
-}
+
 let addEvents = () => { 
     const delButtons = document.querySelectorAll('.deleteButton')
     delButtons.forEach(delButton =>{
@@ -75,6 +80,9 @@ addBookFromPopUp.addEventListener('click', e=>{
     e.preventDefault();
     addBook(document.getElementById('title').value,document.getElementById('author').value, document.getElementById('pages').value);
     addBooksToContainer();
+    document.getElementById('title').value = ''
+    document.getElementById('author').value =''
+     document.getElementById('pages').value =''
     closeModal();
     
 });
